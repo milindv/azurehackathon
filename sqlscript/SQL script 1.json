@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "select count(1) from account",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"poolName": "financedwh",
+				"databaseName": "financedwh"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

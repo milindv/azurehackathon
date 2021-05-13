@@ -1,0 +1,118 @@
+{
+	"name": "SRC_MonthlyTransactions",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "financedatalakesourceservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "MonthlyTransaction.csv",
+				"folderPath": "TransactionalData",
+				"fileSystem": "datafiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "PeriodDate",
+				"type": "String"
+			},
+			{
+				"name": "AccountNumber",
+				"type": "String"
+			},
+			{
+				"name": "LoanType",
+				"type": "String"
+			},
+			{
+				"name": "NominalRate",
+				"type": "String"
+			},
+			{
+				"name": "RateCode",
+				"type": "String"
+			},
+			{
+				"name": "FundingTerm",
+				"type": "String"
+			},
+			{
+				"name": "ElapsedTerm",
+				"type": "String"
+			},
+			{
+				"name": "MonthsInArreares",
+				"type": "String"
+			},
+			{
+				"name": "BusinessProduct",
+				"type": "String"
+			},
+			{
+				"name": "Fundingyear",
+				"type": "String"
+			},
+			{
+				"name": "GrossBalance",
+				"type": "String"
+			},
+			{
+				"name": "Installment",
+				"type": "String"
+			},
+			{
+				"name": "TotalAccuredincome",
+				"type": "String"
+			},
+			{
+				"name": "LedgerAdjustments",
+				"type": "String"
+			},
+			{
+				"name": "NegativeBalanceAdjustments",
+				"type": "String"
+			},
+			{
+				"name": "DeferredTotal",
+				"type": "String"
+			},
+			{
+				"name": "Repayment",
+				"type": "String"
+			},
+			{
+				"name": "EAD",
+				"type": "String"
+			},
+			{
+				"name": "PropertyIndexOMV",
+				"type": "String"
+			},
+			{
+				"name": "Securityregion",
+				"type": "String"
+			},
+			{
+				"name": "SellingCostPercentage",
+				"type": "String"
+			},
+			{
+				"name": "EarlierCharges",
+				"type": "String"
+			},
+			{
+				"name": "OriginalAdvance",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

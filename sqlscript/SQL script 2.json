@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 2",
+	"properties": {
+		"content": {
+			"query": "select *\nfrom   MonthlyTransactions mts,\n       account act,\n       baserate bsr,\n       LoanType ltyp,\n       BusinessProduct bp,\n       StagingReferenceRegionLookup srl,\n       date dt\nwhere  mts.AccountNumber = act.AccountNumber\nand    bsr.BaseRateCode  = mts.RateCode\nand    ltyp.LoanType = mts.LoanType\nand    bp.BusinessProductGroup = mts.BusinessProduct\nand    srl.region = mts.Securityregion\nand    dt.date = mts.PeriodDate",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"poolName": "financedwh",
+				"databaseName": "financedwh"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

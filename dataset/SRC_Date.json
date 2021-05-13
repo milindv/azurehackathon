@@ -1,0 +1,194 @@
+{
+	"name": "SRC_Date",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "financedatalakesourceservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Date.csv",
+				"folderPath": "DimensionData",
+				"fileSystem": "datafiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "DateKey",
+				"type": "String"
+			},
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Date_Name",
+				"type": "String"
+			},
+			{
+				"name": "Year",
+				"type": "String"
+			},
+			{
+				"name": "Year_Name",
+				"type": "String"
+			},
+			{
+				"name": "Quarter",
+				"type": "String"
+			},
+			{
+				"name": "Quarter_Name",
+				"type": "String"
+			},
+			{
+				"name": "Month",
+				"type": "String"
+			},
+			{
+				"name": "Month_Name",
+				"type": "String"
+			},
+			{
+				"name": "Day_Of_Year",
+				"type": "String"
+			},
+			{
+				"name": "Day_Of_Year_Name",
+				"type": "String"
+			},
+			{
+				"name": "Day_Of_Quarter",
+				"type": "String"
+			},
+			{
+				"name": "Day_Of_Quarter_Name",
+				"type": "String"
+			},
+			{
+				"name": "Day_Of_Month",
+				"type": "String"
+			},
+			{
+				"name": "Day_Of_Month_Name",
+				"type": "String"
+			},
+			{
+				"name": "Month_Of_Year",
+				"type": "String"
+			},
+			{
+				"name": "Month_Of_Year_Name",
+				"type": "String"
+			},
+			{
+				"name": "Month_Of_Quarter",
+				"type": "String"
+			},
+			{
+				"name": "Month_Of_Quarter_Name",
+				"type": "String"
+			},
+			{
+				"name": "Quarter_Of_Year",
+				"type": "String"
+			},
+			{
+				"name": "Quarter_Of_Year_Name",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Year",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Year_Name",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Quarter",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Quarter_Name",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Month",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Month_Name",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Day",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Day_Name",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Day_Of_Year",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Day_Of_Year_Name",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Day_Of_Quarter",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Day_Of_Quarter_Name",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Day_Of_Month",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Day_Of_Month_Name",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Month_Of_Year",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Month_Of_Year_Name",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Month_Of_Quarter",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Month_Of_Quarter_Name",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Quarter_Of_Year",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Quarter_Of_Year_Name",
+				"type": "String"
+			},
+			{
+				"name": "Fiscal_Quarter_End",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

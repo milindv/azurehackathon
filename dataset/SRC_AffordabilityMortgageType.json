@@ -1,0 +1,42 @@
+{
+	"name": "SRC_AffordabilityMortgageType",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "financedatalakesourceservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "AffordabilityMortgageType.csv",
+				"folderPath": "DimensionData",
+				"fileSystem": "datafiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "MortgageTypeKey",
+				"type": "String"
+			},
+			{
+				"name": "MortgageType",
+				"type": "String"
+			},
+			{
+				"name": "MortgageType_Description",
+				"type": "String"
+			},
+			{
+				"name": "AuditKey",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

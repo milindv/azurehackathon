@@ -1,0 +1,171 @@
+{
+	"name": "LoadAffordabilityAssesment",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopyAffordabilityAssesmentData",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table dbo.AffordabilityAssesment;",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": true
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "synapsemastek-WorkspaceDefaultStorage",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "AffordabilityAssesmentKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AffordabilityAssesmentKey",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MamrwithoutPlausability",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MamrwithoutPlausability",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MamrwithPlausability",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MamrwithPlausability",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AcceptanceStatus",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AcceptanceStatus",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CreditImpaired",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CreditImpaired",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalUnsecuredToRepay",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TotalUnsecuredToRepay",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalUnsecuredNotToRepay",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TotalUnsecuredNotToRepay",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MonthlyUnsecuredNotRepaid",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MonthlyUnsecuredNotRepaid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NumberofHouseholds",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NumberofHouseholds",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AuditKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AuditKey",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SRC_AffordabilityAssesment",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEST_AffordabilityAssesment",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-05-10T13:38:09Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

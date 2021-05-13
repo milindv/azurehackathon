@@ -1,0 +1,36 @@
+{
+	"name": "DEST_AffordabilityExpenditureType",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "ExpenditureTypeKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ExpenditureType",
+				"type": "varchar"
+			},
+			{
+				"name": "SourceColumnName",
+				"type": "varchar"
+			},
+			{
+				"name": "AuditKey",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "AffordabilityExpenditureType"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

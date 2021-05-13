@@ -1,0 +1,98 @@
+{
+	"name": "DEST_Account",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "AccountKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AccountNaturalKey",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "Tarifftype",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountType",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrentTariffType",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrentAccountStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrentAccountType",
+				"type": "varchar"
+			},
+			{
+				"name": "RowStartDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RowEndDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RowIscurrent",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "InsertedAuditKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "UpdatedAuditKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AccountSource",
+				"type": "varchar"
+			},
+			{
+				"name": "IsCBTL",
+				"type": "bit"
+			},
+			{
+				"name": "CurrentIsCBTL",
+				"type": "bit"
+			},
+			{
+				"name": "RepaymentStrategy",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Account"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

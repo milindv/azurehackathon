@@ -1,0 +1,6 @@
+{
+	"name": "OracleIR",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

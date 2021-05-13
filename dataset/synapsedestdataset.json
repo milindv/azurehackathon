@@ -1,0 +1,60 @@
+{
+	"name": "synapsedestdataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "AffordabilityAssesmentKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MamrwithoutPlausability",
+				"type": "varchar"
+			},
+			{
+				"name": "MamrwithPlausability",
+				"type": "varchar"
+			},
+			{
+				"name": "AcceptanceStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "CreditImpaired",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalUnsecuredToRepay",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalUnsecuredNotToRepay",
+				"type": "varchar"
+			},
+			{
+				"name": "MonthlyUnsecuredNotRepaid",
+				"type": "varchar"
+			},
+			{
+				"name": "NumberofHouseholds",
+				"type": "varchar"
+			},
+			{
+				"name": "AuditKey",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "AffordabilityAssesment"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

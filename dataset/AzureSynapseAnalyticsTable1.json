@@ -1,0 +1,36 @@
+{
+	"name": "AzureSynapseAnalyticsTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "MortgageTypeKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MortgageType",
+				"type": "varchar"
+			},
+			{
+				"name": "Mortgage_Description",
+				"type": "varchar"
+			},
+			{
+				"name": "AuditKey",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "AffordabilityMortgageType"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

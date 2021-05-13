@@ -1,0 +1,27 @@
+{
+	"name": "DEST_LoanType",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "LoanTypeKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LoanType",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "LoanType"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

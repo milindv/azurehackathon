@@ -1,0 +1,46 @@
+{
+	"name": "SRC_BaseRate",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "financedatalakesourceservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "BaseRate.csv",
+				"folderPath": "DimensionData",
+				"fileSystem": "datafiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "BaseRateKey",
+				"type": "String"
+			},
+			{
+				"name": "BaseRateTypeName",
+				"type": "String"
+			},
+			{
+				"name": "BaseRateCode",
+				"type": "String"
+			},
+			{
+				"name": "BaseRate",
+				"type": "String"
+			},
+			{
+				"name": "AuditKey",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

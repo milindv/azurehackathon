@@ -1,0 +1,181 @@
+{
+	"name": "LoadStagingLOSIncomeVerificationResult",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopyStagingLOSIncomeVerificationResultData",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table dbo.StagingLOSIncomeVerificationResult;",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": true
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "synapsemastek-WorkspaceDefaultStorage",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Record_Order",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Record_Order",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CreatedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ModifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "ModifiedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CreatedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CreatedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ModifiedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ModifiedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Deleted",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Deleted",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"name": "ApplicantId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ApplicantId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Status",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Status",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "RawResult",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RawResult",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AuditKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AuditKey",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SRC_StagingLOSIncomeVerificationResult",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEST_StagingLOSIncomeVerificationResult",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-05-10T13:38:13Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

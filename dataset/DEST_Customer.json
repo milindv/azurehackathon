@@ -1,0 +1,123 @@
+{
+	"name": "DEST_Customer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "CustomerKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CustomerNaturalKey",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerDurableKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CutomerTitle",
+				"type": "varchar"
+			},
+			{
+				"name": "CutomerFirstName",
+				"type": "varchar"
+			},
+			{
+				"name": "CutomerLastName",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerSalutation",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerTelephone",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerMobile",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerEmail",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrentCutomerTitle",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrentCutomerFirstName",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrentCutomerLastName",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrentCustomerSalutation",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrentCustomerDOB",
+				"type": "date"
+			},
+			{
+				"name": "CurrentCustomerTelephone",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrentCustomerMobile",
+				"type": "varchar"
+			},
+			{
+				"name": "CurrentCustomerEmail",
+				"type": "varchar"
+			},
+			{
+				"name": "RowIsCurrent",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RowStartDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RowEndDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "InsertedAuditKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "UpdatedAuditKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CustomerDOB",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Customer"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

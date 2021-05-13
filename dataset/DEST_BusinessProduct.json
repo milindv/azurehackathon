@@ -1,0 +1,43 @@
+{
+	"name": "DEST_BusinessProduct",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "BusinessProductKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BusinessProduct",
+				"type": "varchar"
+			},
+			{
+				"name": "BusinessProductGroup",
+				"type": "varchar"
+			},
+			{
+				"name": "BusinessProductDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "BusinessProductVariant",
+				"type": "varchar"
+			},
+			{
+				"name": "ForecastVariant",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BusinessProduct"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

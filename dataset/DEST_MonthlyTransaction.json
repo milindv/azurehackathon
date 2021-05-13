@@ -1,0 +1,142 @@
+{
+	"name": "DEST_MonthlyTransaction",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "PeriodDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "AccountNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "LoanType",
+				"type": "varchar"
+			},
+			{
+				"name": "NominalRate",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "RateCode",
+				"type": "varchar"
+			},
+			{
+				"name": "FundingTerm",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ElapsedTerm",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MonthsInArrears",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BusinessProduct",
+				"type": "varchar"
+			},
+			{
+				"name": "Fundingyear",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GrossBalance",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "Installment",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "TotalAccuredincome",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "LedgerAdjustments",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "NegativeBalanceAdjustments",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "DeferredTotal",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "Repayment",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "EAD",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "PropertyIndexOMV",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "Securityregion",
+				"type": "varchar"
+			},
+			{
+				"name": "SellingCostPercentage",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "EarlierCharges",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "OriginalAdvance",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "MonthlyTransactions"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,106 @@
+{
+	"name": "SRC_Customer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "financedatalakesourceservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Customer.csv",
+				"folderPath": "DimensionData",
+				"fileSystem": "datafiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "CustomerKey",
+				"type": "String"
+			},
+			{
+				"name": "CustomerNaturalKey",
+				"type": "String"
+			},
+			{
+				"name": "CustomerDurableKey",
+				"type": "String"
+			},
+			{
+				"name": "CutomerTitle",
+				"type": "String"
+			},
+			{
+				"name": "CutomerFirstName",
+				"type": "String"
+			},
+			{
+				"name": "CutomerLastName",
+				"type": "String"
+			},
+			{
+				"name": "CustomerSalutation",
+				"type": "String"
+			},
+			{
+				"name": "CustomerTelephone",
+				"type": "String"
+			},
+			{
+				"name": "CustomerMobile",
+				"type": "String"
+			},
+			{
+				"name": "CustomerEmail",
+				"type": "String"
+			},
+			{
+				"name": "CurrentCutomerTitle",
+				"type": "String"
+			},
+			{
+				"name": "CurrentCutomerFirstName",
+				"type": "String"
+			},
+			{
+				"name": "CurrentCutomerLastName",
+				"type": "String"
+			},
+			{
+				"name": "CurrentCustomerSalutation",
+				"type": "String"
+			},
+			{
+				"name": "CurrentCustomerDOB",
+				"type": "String"
+			},
+			{
+				"name": "CurrentCustomerTelephone",
+				"type": "String"
+			},
+			{
+				"name": "CurrentCustomerMobile",
+				"type": "String"
+			},
+			{
+				"name": "CurrentCustomerEmail",
+				"type": "String"
+			},
+			{
+				"name": "RowIsCurrent",
+				"type": "String"
+			},
+			{
+				"name": "CustomerDOB",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

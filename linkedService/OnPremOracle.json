@@ -1,0 +1,16 @@
+{
+	"name": "OnPremOracle",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Oracle",
+		"typeProperties": {
+			"connectionString": "host=192.168.2.4;port=1521;sid=xe;user id=sales",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhOTliYmU5NC0zY2I3LTRmODktOGEwZi1mY2Y4MDYxNjE4NmIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "OracleIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

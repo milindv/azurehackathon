@@ -1,0 +1,271 @@
+{
+	"name": "LoadCustomer",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopyCustomerData",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table dbo.Customer;",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": true
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "synapsemastek-WorkspaceDefaultStorage",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CustomerKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerKey",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerNaturalKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerNaturalKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerDurableKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerDurableKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CutomerTitle",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CutomerTitle",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CutomerFirstName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CutomerFirstName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CutomerLastName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CutomerLastName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerSalutation",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerSalutation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerTelephone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerTelephone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerMobile",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerMobile",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerEmail",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerEmail",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrentCutomerTitle",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrentCutomerTitle",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrentCutomerFirstName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrentCutomerFirstName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrentCutomerLastName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrentCutomerLastName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrentCustomerSalutation",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrentCustomerSalutation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrentCustomerDOB",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CurrentCustomerDOB",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrentCustomerTelephone",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrentCustomerTelephone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrentCustomerMobile",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrentCustomerMobile",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CurrentCustomerEmail",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CurrentCustomerEmail",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RowIsCurrent",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RowIsCurrent",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerDOB",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CustomerDOB",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SRC_Customer",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEST_Customer",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-05-10T13:38:39Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

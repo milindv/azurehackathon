@@ -1,0 +1,481 @@
+{
+	"name": "LoadDate",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopyDateData",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table dbo.date;",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": true
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "synapsemastek-WorkspaceDefaultStorage",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DateKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DateKey",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "Date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Date",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Date_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Date_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Year",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Year",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Year_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Year_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Quarter",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Quarter",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Quarter_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Quarter_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Month",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Month",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Month_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Month_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Day_Of_Year",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Day_Of_Year",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Day_Of_Year_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Day_Of_Year_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Day_Of_Quarter",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Day_Of_Quarter",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Day_Of_Quarter_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Day_Of_Quarter_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Day_Of_Month",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Day_Of_Month",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Day_Of_Month_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Day_Of_Month_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Month_Of_Year",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Month_Of_Year",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Month_Of_Year_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Month_Of_Year_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Month_Of_Quarter",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Month_Of_Quarter",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Month_Of_Quarter_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Month_Of_Quarter_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Quarter_Of_Year",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Quarter_Of_Year",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Quarter_Of_Year_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Quarter_Of_Year_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Year",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Fiscal_Year",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Year_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Year_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Quarter",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Quarter",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Quarter_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Quarter_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Month",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Fiscal_Month",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Month_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Month_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Day",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "Fiscal_Day",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Day_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Day_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Day_Of_Year",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Day_Of_Year",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Day_Of_Year_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Day_Of_Year_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Day_Of_Quarter",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Day_Of_Quarter",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Day_Of_Quarter_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Day_Of_Quarter_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Day_Of_Month",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Day_Of_Month",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Day_Of_Month_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Day_Of_Month_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Month_Of_Year",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Month_Of_Year",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Month_Of_Year_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Month_Of_Year_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Month_Of_Quarter",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Month_Of_Quarter",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Month_Of_Quarter_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Month_Of_Quarter_Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Quarter_Of_Year",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Quarter_Of_Year",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Fiscal_Quarter_Of_Year_Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fiscal_Quarter_Of_Year_Name",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SRC_Date",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEST_Date",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-05-10T13:38:59Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

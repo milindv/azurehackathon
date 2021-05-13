@@ -1,0 +1,17 @@
+{
+	"name": "srcAccount",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SelfHostOracleLink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "MASTEK_ORA",
+			"table": "ACCOUNT"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,602 @@
+{
+	"name": "MonthlyTranAnalysis",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "financeanalysis",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1",
+				"state": {
+					"ea195c87-a1d5-429f-9f1c-3ababc3038f7": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"SellingCostPercentage": "0.25",
+										"Installment": "1400.716667",
+										"OriginalAdvance": "168086",
+										"AccountNumber": "10001",
+										"DeferredTotal": "0",
+										"RateCode": "BR_01",
+										"MonthsInArreares": "0",
+										"PeriodDate": "4/1/2021",
+										"ElapsedTerm": "1",
+										"PropertyIndexOMV": "294150.5",
+										"GrossBalance": "166685.2833",
+										"Repayment": "1400.716667",
+										"LoanType": "Term",
+										"BusinessProduct": "Term Small",
+										"EAD": "166835.2833",
+										"NominalRate": "0.25",
+										"Fundingyear": "2021",
+										"FundingTerm": "120",
+										"LedgerAdjustments": "50",
+										"TotalAccuredincome": "100",
+										"Securityregion": "East",
+										"NegativeBalanceAdjustments": "0",
+										"EarlierCharges": "500"
+									},
+									{
+										"SellingCostPercentage": "0.25",
+										"Installment": "583.4166667",
+										"OriginalAdvance": "140020",
+										"AccountNumber": "10002",
+										"DeferredTotal": "0",
+										"RateCode": "VR_01",
+										"MonthsInArreares": "0",
+										"PeriodDate": "4/1/2021",
+										"ElapsedTerm": "2",
+										"PropertyIndexOMV": "245035",
+										"GrossBalance": "138853.1667",
+										"Repayment": "583.4166667",
+										"LoanType": "Term",
+										"BusinessProduct": "Term Mid",
+										"EAD": "139003.1667",
+										"NominalRate": "0.3",
+										"Fundingyear": "2021",
+										"FundingTerm": "240",
+										"LedgerAdjustments": "50",
+										"TotalAccuredincome": "100",
+										"Securityregion": "West",
+										"NegativeBalanceAdjustments": "0",
+										"EarlierCharges": "500"
+									},
+									{
+										"SellingCostPercentage": "0.25",
+										"Installment": "142.7972222",
+										"OriginalAdvance": "51407",
+										"AccountNumber": "10003",
+										"DeferredTotal": "0",
+										"RateCode": "VR_02",
+										"MonthsInArreares": "0",
+										"PeriodDate": "4/1/2021",
+										"ElapsedTerm": "3",
+										"PropertyIndexOMV": "89962.25",
+										"GrossBalance": "50978.60833",
+										"Repayment": "142.7972222",
+										"LoanType": "Term",
+										"BusinessProduct": "Term Long",
+										"EAD": "51128.60833",
+										"NominalRate": "0.15",
+										"Fundingyear": "2021",
+										"FundingTerm": "360",
+										"LedgerAdjustments": "50",
+										"TotalAccuredincome": "100",
+										"Securityregion": "East",
+										"NegativeBalanceAdjustments": "0",
+										"EarlierCharges": "500"
+									},
+									{
+										"SellingCostPercentage": "0.25",
+										"Installment": "265.4479167",
+										"OriginalAdvance": "127415",
+										"AccountNumber": "10004",
+										"DeferredTotal": "0",
+										"RateCode": "MR_01",
+										"MonthsInArreares": "1",
+										"PeriodDate": "4/1/2021",
+										"ElapsedTerm": "4",
+										"PropertyIndexOMV": "222976.25",
+										"GrossBalance": "126353.2083",
+										"Repayment": "265.4479167",
+										"LoanType": "Term",
+										"BusinessProduct": "Term Very Long",
+										"EAD": "126503.2083",
+										"NominalRate": "0.175",
+										"Fundingyear": "2021",
+										"FundingTerm": "480",
+										"LedgerAdjustments": "50",
+										"TotalAccuredincome": "100",
+										"Securityregion": "West",
+										"NegativeBalanceAdjustments": "0",
+										"EarlierCharges": "500"
+									},
+									{
+										"SellingCostPercentage": "0.25",
+										"Installment": "1056.416667",
+										"OriginalAdvance": "63385",
+										"AccountNumber": "10005",
+										"DeferredTotal": "0",
+										"RateCode": "MR_02",
+										"MonthsInArreares": "1",
+										"PeriodDate": "4/1/2021",
+										"ElapsedTerm": "5",
+										"PropertyIndexOMV": "110923.75",
+										"GrossBalance": "58102.91667",
+										"Repayment": "1056.416667",
+										"LoanType": "Development",
+										"BusinessProduct": "Development Land",
+										"EAD": "58252.91667",
+										"NominalRate": "0.2",
+										"Fundingyear": "2021",
+										"FundingTerm": "60",
+										"LedgerAdjustments": "50",
+										"TotalAccuredincome": "100",
+										"Securityregion": "East",
+										"NegativeBalanceAdjustments": "0",
+										"EarlierCharges": "500"
+									},
+									{
+										"SellingCostPercentage": "0.25",
+										"Installment": "9610.833333",
+										"OriginalAdvance": "172995",
+										"AccountNumber": "10006",
+										"DeferredTotal": "0",
+										"RateCode": "BR_01",
+										"MonthsInArreares": "2",
+										"PeriodDate": "4/1/2021",
+										"ElapsedTerm": "6",
+										"PropertyIndexOMV": "302741.25",
+										"GrossBalance": "115330",
+										"Repayment": "9610.833333",
+										"LoanType": "Regulated",
+										"BusinessProduct": "Regulated",
+										"EAD": "115480",
+										"NominalRate": "0.1",
+										"Fundingyear": "2020",
+										"FundingTerm": "18",
+										"LedgerAdjustments": "50",
+										"TotalAccuredincome": "100",
+										"Securityregion": "West",
+										"NegativeBalanceAdjustments": "0",
+										"EarlierCharges": "500"
+									},
+									{
+										"SellingCostPercentage": "0.25",
+										"Installment": "17862.625",
+										"OriginalAdvance": "857406",
+										"AccountNumber": "10007",
+										"DeferredTotal": "0",
+										"RateCode": "VR_01",
+										"MonthsInArreares": "3",
+										"PeriodDate": "4/1/2021",
+										"ElapsedTerm": "7",
+										"PropertyIndexOMV": "1500460.5",
+										"GrossBalance": "732367.625",
+										"Repayment": "17862.625",
+										"LoanType": "Unregulated",
+										"BusinessProduct": "UnRegulated",
+										"EAD": "732517.625",
+										"NominalRate": "0.5",
+										"Fundingyear": "2020",
+										"FundingTerm": "48",
+										"LedgerAdjustments": "50",
+										"TotalAccuredincome": "100",
+										"Securityregion": "East",
+										"NegativeBalanceAdjustments": "0",
+										"EarlierCharges": "500"
+									},
+									{
+										"SellingCostPercentage": "0.25",
+										"Installment": "1400.716667",
+										"OriginalAdvance": "168086",
+										"AccountNumber": "10008",
+										"DeferredTotal": "0",
+										"RateCode": "BR_01",
+										"MonthsInArreares": "0",
+										"PeriodDate": "4/1/2021",
+										"ElapsedTerm": "1",
+										"PropertyIndexOMV": "294150.5",
+										"GrossBalance": "166685.2833",
+										"Repayment": "1400.716667",
+										"LoanType": "Term",
+										"BusinessProduct": "Term Small",
+										"EAD": "166835.2833",
+										"NominalRate": "0.25",
+										"Fundingyear": "2021",
+										"FundingTerm": "120",
+										"LedgerAdjustments": "50",
+										"TotalAccuredincome": "100",
+										"Securityregion": "West",
+										"NegativeBalanceAdjustments": "0",
+										"EarlierCharges": "500"
+									},
+									{
+										"SellingCostPercentage": "0.25",
+										"Installment": "583.4166667",
+										"OriginalAdvance": "140020",
+										"AccountNumber": "10009",
+										"DeferredTotal": "0",
+										"RateCode": "VR_01",
+										"MonthsInArreares": "0",
+										"PeriodDate": "4/1/2021",
+										"ElapsedTerm": "2",
+										"PropertyIndexOMV": "245035",
+										"GrossBalance": "138853.1667",
+										"Repayment": "583.4166667",
+										"LoanType": "Term",
+										"BusinessProduct": "Term Mid",
+										"EAD": "139003.1667",
+										"NominalRate": "0.3",
+										"Fundingyear": "2021",
+										"FundingTerm": "240",
+										"LedgerAdjustments": "50",
+										"TotalAccuredincome": "100",
+										"Securityregion": "East",
+										"NegativeBalanceAdjustments": "0",
+										"EarlierCharges": "500"
+									},
+									{
+										"SellingCostPercentage": "0.25",
+										"Installment": "142.7972222",
+										"OriginalAdvance": "51407",
+										"AccountNumber": "100010",
+										"DeferredTotal": "0",
+										"RateCode": "VR_02",
+										"MonthsInArreares": "0",
+										"PeriodDate": "4/1/2021",
+										"ElapsedTerm": "3",
+										"PropertyIndexOMV": "89962.25",
+										"GrossBalance": "50978.60833",
+										"Repayment": "142.7972222",
+										"LoanType": "Term",
+										"BusinessProduct": "Term Long",
+										"EAD": "51128.60833",
+										"NominalRate": "0.15",
+										"Fundingyear": "2021",
+										"FundingTerm": "360",
+										"LedgerAdjustments": "50",
+										"TotalAccuredincome": "100",
+										"Securityregion": "West",
+										"NegativeBalanceAdjustments": "0",
+										"EarlierCharges": "500"
+									}
+								],
+								"schema": {
+									"PeriodDate": "string",
+									"AccountNumber": "string",
+									"LoanType": "string",
+									"NominalRate": "string",
+									"RateCode": "string",
+									"FundingTerm": "string",
+									"ElapsedTerm": "string",
+									"MonthsInArreares": "string",
+									"BusinessProduct": "string",
+									"Fundingyear": "string",
+									"GrossBalance": "string",
+									"Installment": "string",
+									"TotalAccuredincome": "string",
+									"LedgerAdjustments": "string",
+									"NegativeBalanceAdjustments": "string",
+									"DeferredTotal": "string",
+									"Repayment": "string",
+									"EAD": "string",
+									"PropertyIndexOMV": "string",
+									"Securityregion": "string",
+									"SellingCostPercentage": "string",
+									"EarlierCharges": "string",
+									"OriginalAdvance": "string"
+								}
+							},
+							"isSummary": false,
+							"language": "scala"
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"PeriodDate"
+									],
+									"seriesFieldKeys": [
+										"PeriodDate"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					}
+				}
+			},
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/48c9ccbf-aa36-4908-a5e4-5d9a8d6a304f/resourceGroups/synapsehackathonmastek/providers/Microsoft.Synapse/workspaces/synapsemastek/bigDataPools/financeanalysis",
+				"name": "financeanalysis",
+				"type": "Spark",
+				"endpoint": "https://synapsemastek.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/financeanalysis",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 10,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			}
+		},
+		"cells": [
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Read monthly transaction data for doing EDA"
+				],
+				"attachments": null
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"\r\n",
+					"## read transactional file\r\n",
+					"spark_df = spark.read.load('abfss://datafiles@datalakemastek.dfs.core.windows.net/TransactionalData/MonthlyTransaction.csv', format='csv'\r\n",
+					", header=True\r\n",
+					")\r\n",
+					"\r\n",
+					"## show top 10 transactional data\r\n",
+					"display(spark_df.limit(10))"
+				],
+				"attachments": null,
+				"execution_count": 1
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Import Libraries for performing Exploatory Data Analysis"
+				],
+				"attachments": null
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"## import libraries\r\n",
+					"import numpy as np\r\n",
+					"import pandas as pd\r\n",
+					"\r\n",
+					"import matplotlib.pyplot as plt\r\n",
+					"import seaborn as sns\r\n",
+					"\r\n",
+					"pd.set_option(\"display.precision\", 2)"
+				],
+				"attachments": null,
+				"execution_count": 2
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"## convert spark dataframe into pandas\r\n",
+					"df = spark_df.toPandas()"
+				],
+				"attachments": null,
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"## get the data info\r\n",
+					"df.info()"
+				],
+				"attachments": null,
+				"execution_count": 4
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"## convert datatypes from object to decimal\r\n",
+					"df[['NominalRate','FundingTerm','GrossBalance','Installment','Repayment']] = df[['NominalRate','FundingTerm','GrossBalance','Installment','Repayment']].apply(pd.to_numeric)"
+				],
+				"attachments": null,
+				"execution_count": 14
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"Plot the graphs"
+				],
+				"attachments": null
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"sns.set_style('darkgrid')\r\n",
+					"\r\n",
+					"x = df['LoanType']\r\n",
+					"y = df['FundingTerm']\r\n",
+					"\r\n",
+					"sns.barplot(x, y)\r\n",
+					"plt.show()"
+				],
+				"attachments": null,
+				"execution_count": 15
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"## find the relationship between Funding Term and Repayement\r\n",
+					"sns.scatterplot(data=df, x=\"FundingTerm\", y=\"Repayment\")\r\n",
+					"plt.show()"
+				],
+				"attachments": null,
+				"execution_count": 20
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"## Draw Box plot\r\n",
+					"sns.boxplot(x=\"Securityregion\", y=\"Repayment\", data=df)\r\n",
+					"plt.show()"
+				],
+				"attachments": null,
+				"execution_count": 23
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"##query on the dataset\r\n",
+					"df.query('LoanType == \"Term\"')"
+				],
+				"attachments": null,
+				"execution_count": 6
+			}
+		]
+	}
+}

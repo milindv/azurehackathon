@@ -1,0 +1,66 @@
+{
+	"name": "SRC_AffordabilityAssesment",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "financedatalakesourceservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "AffordabilityAssessment.csv",
+				"folderPath": "DimensionData",
+				"fileSystem": "datafiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "AffordabilityAssessmentKey",
+				"type": "String"
+			},
+			{
+				"name": "MamrWithoutPlausibility",
+				"type": "String"
+			},
+			{
+				"name": "MamrWithPlausibility",
+				"type": "String"
+			},
+			{
+				"name": "AcceptanceStatus",
+				"type": "String"
+			},
+			{
+				"name": "CreditImpaired",
+				"type": "String"
+			},
+			{
+				"name": "TotalUnsecuredToRepay",
+				"type": "String"
+			},
+			{
+				"name": "TotalUnsecuredNotToRepay",
+				"type": "String"
+			},
+			{
+				"name": "MonthlyUnsecuredNotRepaid",
+				"type": "String"
+			},
+			{
+				"name": "NumberofHouseholds",
+				"type": "String"
+			},
+			{
+				"name": "AuditKey",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

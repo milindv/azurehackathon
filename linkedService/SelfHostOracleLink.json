@@ -1,0 +1,17 @@
+{
+	"name": "SelfHostOracleLink",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"description": "Used to connect local oracle db for account data",
+		"annotations": [],
+		"type": "Oracle",
+		"typeProperties": {
+			"connectionString": "host=172.16.226.104;port=1521;sid=MCLTEST7;user id=MASTEK_ORA",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2OTgwNjRjYi0yZWUzLTRjZDItYjkxYy04OWMyODBjZWY5NDYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "IR-Oracle",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

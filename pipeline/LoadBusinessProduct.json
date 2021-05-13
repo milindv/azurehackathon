@@ -1,0 +1,131 @@
+{
+	"name": "LoadBusinessProduct",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopyBusinessProductData",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table dbo.BusinessProduct;",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": true
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "synapsemastek-WorkspaceDefaultStorage",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "BusinessProductKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BusinessProductKey",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BusinessProduct",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BusinessProduct",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BusinessProductGroup",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BusinessProductGroup",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BusinessProductDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BusinessProductDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BusinessProductVariant",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BusinessProductVariant",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ForecastVariant",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ForecastVariant",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SRC_BusinessProduct",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEST_BusinessProduct",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-05-10T13:38:36Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

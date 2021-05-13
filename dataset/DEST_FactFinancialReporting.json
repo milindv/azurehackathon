@@ -1,0 +1,144 @@
+{
+	"name": "DEST_FactFinancialReporting",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "PeriodDateKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AccountNumberKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LoanTypeKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NominalRateKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RateCodeKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FundingTermKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ElapsedTermKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MonthsInArrears",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BusinessProductKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Fundingyear",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GrossBalance",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "Installment",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "TotalAccuredincome",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "LedgerAdjustments",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "NegativeBalanceAdjustments",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "DeferredTotal",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "Repayment",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "EAD",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "PropertyIndexOMV",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "Securityregion",
+				"type": "varchar"
+			},
+			{
+				"name": "SellingCostPercentage",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "EarlierCharges",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			},
+			{
+				"name": "OriginalAdvance",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 9
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "FactFinancialReporting"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

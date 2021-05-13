@@ -1,0 +1,50 @@
+{
+	"name": "SRC_BusinessProduct",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "financedatalakesourceservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "BusinessProduct.csv",
+				"folderPath": "DimensionData",
+				"fileSystem": "datafiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "BusinessProductKey",
+				"type": "String"
+			},
+			{
+				"name": "BusinessProduct",
+				"type": "String"
+			},
+			{
+				"name": "BusinessProductGroup",
+				"type": "String"
+			},
+			{
+				"name": "BusinessProductDescription",
+				"type": "String"
+			},
+			{
+				"name": "BusinessProductVariant",
+				"type": "String"
+			},
+			{
+				"name": "ForecastVariant",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

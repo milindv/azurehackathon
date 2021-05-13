@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 3",
+	"properties": {
+		"content": {
+			"query": "UPDATE FactFinancialReporting SET ElapsedTerm = 9  WHERE PeriodDateKey = '20210601';\n\nCOMMIT;\nselect * from FactFinancialReporting where AccountNumberKey = 1 order by PeriodDateKey desc;\n\n\n\n\nUPDATE FactFinancialReporting SET ElapsedTerm = 2  WHERE PeriodDateKey = '20210501' AND  AccountNumberKey = 1;\nUPDATE FactFinancialReporting SET ElapsedTerm = 3  WHERE PeriodDateKey = '20210601' AND  AccountNumberKey = 1;\nUPDATE FactFinancialReporting SET ElapsedTerm = 4  WHERE PeriodDateKey = '20210701' AND  AccountNumberKey = 1;\nUPDATE FactFinancialReporting SET ElapsedTerm = 5  WHERE PeriodDateKey = '20210801' AND  AccountNumberKey = 1;\nUPDATE FactFinancialReporting SET ElapsedTerm = 6  WHERE PeriodDateKey = '20210901' AND  AccountNumberKey = 1;\nUPDATE FactFinancialReporting SET ElapsedTerm = 7  WHERE PeriodDateKey = '20211001' AND  AccountNumberKey = 1;\nUPDATE FactFinancialReporting SET ElapsedTerm = 8  WHERE PeriodDateKey = '20211101' AND  AccountNumberKey = 1;\nUPDATE FactFinancialReporting SET ElapsedTerm = 9  WHERE PeriodDateKey = '20211201' AND  AccountNumberKey = 1;\nUPDATE FactFinancialReporting SET ElapsedTerm = 10 WHERE PeriodDateKey = '20220101' AND  AccountNumberKey = 1;\nUPDATE FactFinancialReporting SET ElapsedTerm = 11 WHERE PeriodDateKey = '20220201' AND  AccountNumberKey = 1;\nUPDATE FactFinancialReporting SET ElapsedTerm = 12 WHERE PeriodDateKey = '20220301' AND  AccountNumberKey = 1;\nUPDATE FactFinancialReporting SET ElapsedTerm = 13 WHERE PeriodDateKey = '20220401' AND  AccountNumberKey = 1;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"poolName": "financedwh",
+				"databaseName": "financedwh"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

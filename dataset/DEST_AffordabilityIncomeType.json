@@ -1,0 +1,36 @@
+{
+	"name": "DEST_AffordabilityIncomeType",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "IncomeTypeKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IncomeType",
+				"type": "varchar"
+			},
+			{
+				"name": "SourceColumnName",
+				"type": "varchar"
+			},
+			{
+				"name": "AuditKey",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "AffordabilityIncomeType"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,70 @@
+{
+	"name": "DEST_StagingLOSIncomeVerificationResult",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "Record_Order",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CreatedBy",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedBy",
+				"type": "varchar"
+			},
+			{
+				"name": "Deleted",
+				"type": "bit"
+			},
+			{
+				"name": "ApplicantId",
+				"type": "varchar"
+			},
+			{
+				"name": "Status",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RawResult",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AuditKey",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "StagingLOSIncomeVerificationResult"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,40 @@
+{
+	"name": "DEST_BaseRate",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "BaseRateeKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BaseRateTypeName",
+				"type": "varchar"
+			},
+			{
+				"name": "BaseRateCode",
+				"type": "varchar"
+			},
+			{
+				"name": "BaseRateName",
+				"type": "varchar"
+			},
+			{
+				"name": "AuditKey",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BaseRate"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,104 @@
+{
+	"name": "DFLFactReporting",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DEST_MonthlyTransaction",
+						"type": "DatasetReference"
+					},
+					"name": "SRCMonthlyTransactions"
+				},
+				{
+					"dataset": {
+						"referenceName": "DEST_Account",
+						"type": "DatasetReference"
+					},
+					"name": "SRCAccount"
+				},
+				{
+					"dataset": {
+						"referenceName": "DEST_BaseRate",
+						"type": "DatasetReference"
+					},
+					"name": "SRCBaseRate"
+				},
+				{
+					"dataset": {
+						"referenceName": "DEST_LoanType",
+						"type": "DatasetReference"
+					},
+					"name": "SRCLoanType"
+				},
+				{
+					"dataset": {
+						"referenceName": "DEST_BusinessProduct",
+						"type": "DatasetReference"
+					},
+					"name": "SRCBusinessProduct"
+				},
+				{
+					"dataset": {
+						"referenceName": "DEST_StagingReferenceRegionLookup",
+						"type": "DatasetReference"
+					},
+					"name": "SRCStagingReferenceRegionLookup"
+				},
+				{
+					"dataset": {
+						"referenceName": "DEST_Date",
+						"type": "DatasetReference"
+					},
+					"name": "SRCDate"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DEST_FactReporting",
+						"type": "DatasetReference"
+					},
+					"name": "DESTFactFinancialReporting"
+				}
+			],
+			"transformations": [
+				{
+					"name": "JoinAccount"
+				},
+				{
+					"name": "SelectAccountJoinColumns"
+				},
+				{
+					"name": "JoinBaseRate"
+				},
+				{
+					"name": "SelectBaseRateColumns"
+				},
+				{
+					"name": "JoinLoanType"
+				},
+				{
+					"name": "JoinBusinessProduct"
+				},
+				{
+					"name": "SelectBusinessProductColumns"
+				},
+				{
+					"name": "JoinStagingReferenceRegionLookup"
+				},
+				{
+					"name": "SelectStagingReferenceRegionLookupColumns"
+				},
+				{
+					"name": "JoinDate"
+				},
+				{
+					"name": "SelectDateColumns"
+				}
+			],
+			"script": "source(output(\n\t\tPeriodDate as timestamp,\n\t\tAccountNumber as string,\n\t\tLoanType as string,\n\t\tNominalRate as decimal(18,9),\n\t\tRateCode as string,\n\t\tFundingTerm as integer,\n\t\tElapsedTerm as integer,\n\t\tMonthsInArrears as integer,\n\t\tBusinessProduct as string,\n\t\tFundingyear as integer,\n\t\tGrossBalance as decimal(18,9),\n\t\tInstallment as decimal(18,9),\n\t\tTotalAccuredincome as decimal(18,9),\n\t\tLedgerAdjustments as decimal(18,9),\n\t\tNegativeBalanceAdjustments as decimal(18,9),\n\t\tDeferredTotal as decimal(18,9),\n\t\tRepayment as decimal(18,9),\n\t\tEAD as decimal(18,9),\n\t\tPropertyIndexOMV as decimal(18,9),\n\t\tSecurityregion as string,\n\t\tSellingCostPercentage as decimal(18,9),\n\t\tEarlierCharges as decimal(18,9),\n\t\tOriginalAdvance as decimal(18,9)\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> SRCMonthlyTransactions\nsource(output(\n\t\tAccountKey as integer,\n\t\tAccountNaturalKey as string,\n\t\tAccountNumber as string,\n\t\tTarifftype as string,\n\t\tAccountStatus as string,\n\t\tAccountType as string,\n\t\tCurrentTariffType as string,\n\t\tCurrentAccountStatus as string,\n\t\tCurrentAccountType as string,\n\t\tRowStartDate as timestamp,\n\t\tRowEndDate as timestamp,\n\t\tRowIscurrent as integer,\n\t\tInsertedAuditKey as integer,\n\t\tUpdatedAuditKey as integer,\n\t\tAccountSource as string,\n\t\tIsCBTL as boolean,\n\t\tCurrentIsCBTL as boolean,\n\t\tRepaymentStrategy as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> SRCAccount\nsource(output(\n\t\tBaseRateKey as integer,\n\t\tBaseRateTypeName as string,\n\t\tBaseRateCode as string,\n\t\tBaseRate as string,\n\t\tAuditKey as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> SRCBaseRate\nsource(output(\n\t\tLoanTypeKey as integer,\n\t\tLoanType as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> SRCLoanType\nsource(output(\n\t\tBusinessProductKey as integer,\n\t\tBusinessProduct as string,\n\t\tBusinessProductGroup as string,\n\t\tBusinessProductDescription as string,\n\t\tBusinessProductVariant as string,\n\t\tForecastVariant as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> SRCBusinessProduct\nsource(output(\n\t\treportCounty as string,\n\t\tregion as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> SRCStagingReferenceRegionLookup\nsource(output(\n\t\tDateKey as long,\n\t\tDate as date,\n\t\tDate_Name as string,\n\t\tYear as timestamp,\n\t\tYear_Name as string,\n\t\tQuarter as timestamp,\n\t\tQuarter_Name as string,\n\t\tMonth as timestamp,\n\t\tMonth_Name as string,\n\t\tDay_Of_Year as integer,\n\t\tDay_Of_Year_Name as string,\n\t\tDay_Of_Quarter as integer,\n\t\tDay_Of_Quarter_Name as string,\n\t\tDay_Of_Month as integer,\n\t\tDay_Of_Month_Name as string,\n\t\tMonth_Of_Year as integer,\n\t\tMonth_Of_Year_Name as string,\n\t\tMonth_Of_Quarter as integer,\n\t\tMonth_Of_Quarter_Name as string,\n\t\tQuarter_Of_Year as integer,\n\t\tQuarter_Of_Year_Name as string,\n\t\tFiscal_Year as timestamp,\n\t\tFiscal_Year_Name as string,\n\t\tFiscal_Quarter as timestamp,\n\t\tFiscal_Quarter_Name as string,\n\t\tFiscal_Month as timestamp,\n\t\tFiscal_Month_Name as string,\n\t\tFiscal_Day as timestamp,\n\t\tFiscal_Day_Name as string,\n\t\tFiscal_Day_Of_Year as integer,\n\t\tFiscal_Day_Of_Year_Name as string,\n\t\tFiscal_Day_Of_Quarter as integer,\n\t\tFiscal_Day_Of_Quarter_Name as string,\n\t\tFiscal_Day_Of_Month as integer,\n\t\tFiscal_Day_Of_Month_Name as string,\n\t\tFiscal_Month_Of_Year as integer,\n\t\tFiscal_Month_Of_Year_Name as string,\n\t\tFiscal_Month_Of_Quarter as integer,\n\t\tFiscal_Month_Of_Quarter_Name as string,\n\t\tFiscal_Quarter_Of_Year as integer,\n\t\tFiscal_Quarter_Of_Year_Name as string,\n\t\tFiscal_Quarter_End as timestamp\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> SRCDate\nSRCMonthlyTransactions, SRCAccount join(SRCMonthlyTransactions@AccountNumber == SRCAccount@AccountNumber,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> JoinAccount\nJoinAccount select(mapColumn(\n\t\tPeriodDate,\n\t\tAccountNumber = SRCMonthlyTransactions@AccountNumber,\n\t\tLoanType,\n\t\tNominalRate,\n\t\tRateCode,\n\t\tFundingTerm,\n\t\tElapsedTerm,\n\t\tMonthsInArrears,\n\t\tBusinessProduct,\n\t\tFundingyear,\n\t\tGrossBalance,\n\t\tInstallment,\n\t\tTotalAccuredincome,\n\t\tLedgerAdjustments,\n\t\tNegativeBalanceAdjustments,\n\t\tDeferredTotal,\n\t\tRepayment,\n\t\tEAD,\n\t\tPropertyIndexOMV,\n\t\tSecurityregion,\n\t\tSellingCostPercentage,\n\t\tEarlierCharges,\n\t\tOriginalAdvance,\n\t\tAccountKey,\n\t\tAccountNumber = SRCAccount@AccountNumber\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectAccountJoinColumns\nSelectAccountJoinColumns, SRCBaseRate join(RateCode == BaseRateCode,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> JoinBaseRate\nJoinBaseRate select(mapColumn(\n\t\tPeriodDate,\n\t\tAccountNumber,\n\t\tLoanType,\n\t\tNominalRate,\n\t\tRateCode,\n\t\tFundingTerm,\n\t\tElapsedTerm,\n\t\tMonthsInArrears,\n\t\tBusinessProduct,\n\t\tFundingyear,\n\t\tGrossBalance,\n\t\tInstallment,\n\t\tTotalAccuredincome,\n\t\tLedgerAdjustments,\n\t\tNegativeBalanceAdjustments,\n\t\tDeferredTotal,\n\t\tRepayment,\n\t\tEAD,\n\t\tPropertyIndexOMV,\n\t\tSecurityregion,\n\t\tSellingCostPercentage,\n\t\tEarlierCharges,\n\t\tOriginalAdvance,\n\t\tAccountKey,\n\t\tBaseRateKey\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectBaseRateColumns\nSelectBaseRateColumns, SRCLoanType join(SelectBaseRateColumns@LoanType == SRCLoanType@LoanType,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> JoinLoanType\nJoinLoanType, SRCBusinessProduct join(SelectBaseRateColumns@BusinessProduct == BusinessProductGroup,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> JoinBusinessProduct\nJoinBusinessProduct select(mapColumn(\n\t\tPeriodDate,\n\t\tAccountNumber,\n\t\tLoanType = SelectBaseRateColumns@LoanType,\n\t\tNominalRate,\n\t\tRateCode,\n\t\tFundingTerm,\n\t\tElapsedTerm,\n\t\tMonthsInArrears,\n\t\tBusinessProduct = SelectBaseRateColumns@BusinessProduct,\n\t\tFundingyear,\n\t\tGrossBalance,\n\t\tInstallment,\n\t\tTotalAccuredincome,\n\t\tLedgerAdjustments,\n\t\tNegativeBalanceAdjustments,\n\t\tDeferredTotal,\n\t\tRepayment,\n\t\tEAD,\n\t\tPropertyIndexOMV,\n\t\tSecurityregion,\n\t\tSellingCostPercentage,\n\t\tEarlierCharges,\n\t\tOriginalAdvance,\n\t\tAccountKey,\n\t\tBaseRateKey,\n\t\tLoanTypeKey,\n\t\tBusinessProductKey\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectBusinessProductColumns\nSelectBusinessProductColumns, SRCStagingReferenceRegionLookup join(Securityregion == region,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> JoinStagingReferenceRegionLookup\nJoinStagingReferenceRegionLookup select(mapColumn(\n\t\tPeriodDate,\n\t\tAccountNumber,\n\t\tLoanType,\n\t\tNominalRate,\n\t\tRateCode,\n\t\tFundingTerm,\n\t\tElapsedTerm,\n\t\tMonthsInArrears,\n\t\tBusinessProduct,\n\t\tFundingyear,\n\t\tGrossBalance,\n\t\tInstallment,\n\t\tTotalAccuredincome,\n\t\tLedgerAdjustments,\n\t\tNegativeBalanceAdjustments,\n\t\tDeferredTotal,\n\t\tRepayment,\n\t\tEAD,\n\t\tPropertyIndexOMV,\n\t\tSecurityregion,\n\t\tSellingCostPercentage,\n\t\tEarlierCharges,\n\t\tOriginalAdvance,\n\t\tAccountKey,\n\t\tBaseRateKey,\n\t\tLoanTypeKey,\n\t\tBusinessProductKey,\n\t\treportCounty\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectStagingReferenceRegionLookupColumns\nSelectStagingReferenceRegionLookupColumns, SRCDate join(PeriodDate == Date,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> JoinDate\nJoinDate select(mapColumn(\n\t\teach(match(true()))\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> SelectDateColumns\nSelectDateColumns sink(input(\n\t\tPeriodDateKey as integer,\n\t\tAccountNumberKey as integer,\n\t\tLoanTypeKey as integer,\n\t\tNominalRate as decimal(18,9),\n\t\tRateCodeKey as integer,\n\t\tFundingTerm as integer,\n\t\tElapsedTerm as integer,\n\t\tMonthsInArrears as integer,\n\t\tBusinessProductKey as integer,\n\t\tFundingyear as integer,\n\t\tGrossBalance as decimal(18,9),\n\t\tInstallment as decimal(18,9),\n\t\tTotalAccuredincome as decimal(18,9),\n\t\tLedgerAdjustments as decimal(18,9),\n\t\tNegativeBalanceAdjustments as decimal(18,9),\n\t\tDeferredTotal as decimal(18,9),\n\t\tRepayment as decimal(18,9),\n\t\tEAD as decimal(18,9),\n\t\tPropertyIndexOMV as decimal(18,9),\n\t\tSecurityregion as string,\n\t\tSellingCostPercentage as decimal(18,9),\n\t\tEarlierCharges as decimal(18,9),\n\t\tOriginalAdvance as decimal(18,9)\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tallowCopyCommand: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> DESTFactFinancialReporting"
+		}
+	}
+}

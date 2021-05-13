@@ -1,0 +1,215 @@
+{
+	"name": "DEST_Date",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "DateKey",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Date",
+				"type": "date"
+			},
+			{
+				"name": "Date_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Year",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Year_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Quarter",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Quarter_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Month",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Month_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Day_Of_Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Day_Of_Year_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Day_Of_Quarter",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Day_Of_Quarter_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Day_Of_Month",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Day_Of_Month_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Month_Of_Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Month_Of_Year_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Month_Of_Quarter",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Month_Of_Quarter_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Quarter_Of_Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Quarter_Of_Year_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Fiscal_Year",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Fiscal_Year_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Fiscal_Quarter",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Fiscal_Quarter_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Fiscal_Month",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Fiscal_Month_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Fiscal_Day",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Fiscal_Day_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Fiscal_Day_Of_Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Fiscal_Day_Of_Year_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Fiscal_Day_Of_Quarter",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Fiscal_Day_Of_Quarter_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Fiscal_Day_Of_Month",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Fiscal_Day_Of_Month_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Fiscal_Month_Of_Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Fiscal_Month_Of_Year_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Fiscal_Month_Of_Quarter",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Fiscal_Month_Of_Quarter_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Fiscal_Quarter_Of_Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Fiscal_Quarter_Of_Year_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Fiscal_Quarter_End",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Date"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

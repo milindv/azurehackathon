@@ -1,0 +1,17 @@
+{
+	"name": "SRC_Account",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OnPremOracle",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SALES",
+			"table": "ACCOUNT"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

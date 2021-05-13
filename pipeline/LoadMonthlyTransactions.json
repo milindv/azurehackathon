@@ -1,0 +1,299 @@
+{
+	"name": "LoadMonthlyTransactions",
+	"properties": {
+		"activities": [
+			{
+				"name": "CopyMonthlyTransactionsData",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": true
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "synapsemastek-WorkspaceDefaultStorage",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PeriodDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PeriodDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LoanType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LoanType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NominalRate",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NominalRate",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RateCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RateCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FundingTerm",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FundingTerm",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ElapsedTerm",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ElapsedTerm",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MonthsInArreares",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MonthsInArrears",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BusinessProduct",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BusinessProduct",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Fundingyear",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Fundingyear",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "GrossBalance",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GrossBalance",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Installment",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Installment",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalAccuredincome",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TotalAccuredincome",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "LedgerAdjustments",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LedgerAdjustments",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NegativeBalanceAdjustments",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NegativeBalanceAdjustments",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DeferredTotal",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DeferredTotal",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Repayment",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Repayment",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "EAD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EAD",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PropertyIndexOMV",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PropertyIndexOMV",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Securityregion",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Securityregion",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SellingCostPercentage",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SellingCostPercentage",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "EarlierCharges",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EarlierCharges",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "OriginalAdvance",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OriginalAdvance",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SRC_MonthlyTransactions",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DEST_MonthlyTransaction",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-05-10T08:05:33Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

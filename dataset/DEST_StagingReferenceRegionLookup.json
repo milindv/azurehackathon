@@ -1,0 +1,26 @@
+{
+	"name": "DEST_StagingReferenceRegionLookup",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapsedestdwh",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "reportCounty",
+				"type": "varchar"
+			},
+			{
+				"name": "region",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "StagingReferenceRegionLookup"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}
