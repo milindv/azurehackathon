@@ -1,0 +1,18 @@
+{
+	"name": "LnkAzureMLService",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureMLService",
+		"typeProperties": {
+			"subscriptionId": "dea42be7-ef07-4ffa-b8ac-50a2a1a28ffd",
+			"resourceGroupName": "datawarehouse2022",
+			"mlWorkspaceName": "demoaml2022",
+			"authentication": "MSI"
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

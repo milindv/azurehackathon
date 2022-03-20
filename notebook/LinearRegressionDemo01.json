@@ -1,0 +1,271 @@
+{
+	"name": "LinearRegressionDemo01",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkpool2022",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "78b8d891-7768-4791-8aac-bf27a8c42426"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/dea42be7-ef07-4ffa-b8ac-50a2a1a28ffd/resourceGroups/datawarehouse2022/providers/Microsoft.Synapse/workspaces/analyticsworkbench/bigDataPools/sparkpool2022",
+				"name": "sparkpool2022",
+				"type": "Spark",
+				"endpoint": "https://analyticsworkbench.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool2022",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 3,
+				"cores": 16,
+				"memory": 112,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# import libraries\r\n",
+					"import numpy as np\r\n",
+					"import pandas as pd\r\n",
+					"import matplotlib.pyplot as plt\r\n",
+					"\r\n",
+					"from sklearn import linear_model\r\n",
+					"from sklearn. linear_model import LinearRegression\r\n",
+					"from sklearn.model_selection import train_test_split\r\n",
+					"from sklearn.metrics import mean_squared_error, r2_score\r\n",
+					""
+				],
+				"attachments": null,
+				"execution_count": 61
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"df = spark.read.load('abfss://misc@datalakedemo2022.dfs.core.windows.net/weight-height.csv', format='csv', header=True\r\n",
+					")\r\n",
+					"\r\n",
+					"dfpandas = df.toPandas()\r\n",
+					"\r\n",
+					"dfpandas.head()"
+				],
+				"attachments": null,
+				"execution_count": 62
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"#Check correlatin between variable\r\n",
+					"#Plot Height vs Weight............\r\n",
+					"x1 = dfpandas['Height'] #pick up Gender column with all rows\r\n",
+					"y1 = dfpandas['Weight'].values #pick up Weight column with all rows\r\n",
+					"\r\n",
+					"plt.scatter(x1,y1,label='Height',color='Green',s=50)\r\n",
+					"\r\n",
+					"plt.xlabel('Height') # Independent variable or predictor variable (x)\r\n",
+					"plt.ylabel('Weight') # Dependent variable or response variable or traget variable (y)\r\n",
+					"plt.title('Height vs Weight')\r\n",
+					"plt.legend()\r\n",
+					"\r\n",
+					"plt.show()\r\n",
+					""
+				],
+				"attachments": null,
+				"execution_count": 63
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"#Separating the dependent and independent values....\r\n",
+					"#x_independent_1 - Independent variable (Weight)\r\n",
+					"#y_dependent_1 - Dependent variable (Height)\r\n",
+					"x_independent_1 = dfpandas['Height']\r\n",
+					"y_dependent_1 = dfpandas['Weight']\r\n",
+					"\r\n",
+					"# Split the data into train and test with 70% data being used for training\r\n",
+					"X_train, X_test, y_train, y_test = train_test_split(x_independent_1, y_dependent_1,test_size=0.30,random_state=42)\r\n",
+					"\r\n",
+					""
+				],
+				"attachments": null,
+				"execution_count": 64
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Convert to dataframes\r\n",
+					"X_train = X_train.to_frame()\r\n",
+					"y_train = y_train.to_frame()\r\n",
+					"\r\n",
+					"X_test = X_test.to_frame()\r\n",
+					"y_test = y_test.to_frame()\r\n",
+					""
+				],
+				"attachments": null,
+				"execution_count": 65
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# run linear regression model\r\n",
+					"clf = LinearRegression()\r\n",
+					""
+				],
+				"attachments": null,
+				"execution_count": 66
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Fit the model\r\n",
+					"clf.fit(X_train,y_train)\r\n",
+					""
+				],
+				"attachments": null,
+				"execution_count": 67
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Predict the output \r\n",
+					"clf.predict(X_test)"
+				],
+				"attachments": null,
+				"execution_count": 68
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Test the accuracy\r\n",
+					"clf.score(X_test,y_test)"
+				],
+				"attachments": null,
+				"execution_count": 70
+			}
+		]
+	}
+}

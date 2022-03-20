@@ -1,0 +1,363 @@
+{
+	"name": "Dimension Load",
+	"properties": {
+		"description": "Load Master Data",
+		"activities": [
+			{
+				"name": "Load Department Group",
+				"description": "Department Group Data",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Delete Master Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowCopyCommand": true
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 2,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DepartmentGroupKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DepartmentGroupKey",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ParentDepartmentGroupKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ParentDepartmentGroupKey",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DepartmentGroupName\r",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DepartmentGroupName",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "sourceDepartment",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sinkDepartmentGroup",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Load Organization Data",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Load Department Group",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowCopyCommand": true
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 2,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OrganizationKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrganizationKey",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ParentOrganizationKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ParentOrganizationKey",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PercentageOfOwnership",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PercentageOfOwnership",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OrganizationName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrganizationName",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "sourceOrganization",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sinkOrganization",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Delete Master Data",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "demoedw",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[TruncateMasterSourceData]"
+				}
+			},
+			{
+				"name": "Load Account Data",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Load Organization Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowCopyCommand": true
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 2,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "AccountKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountKey",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ParentAccountKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ParentAccountKey",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountCodeAlternateKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountCodeAlternateKey",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ParentAccountCodeAlternateKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ParentAccountCodeAlternateKey",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountDescription",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountDescription",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AccountType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Operator",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Operator",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomMembers",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomMembers",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ValueType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ValueType",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "sourceAccount",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sinkAccount",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Dimension Load"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-02-04T09:01:17Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

@@ -1,0 +1,46 @@
+{
+	"name": "sourceOrganization",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LnkSourceMasterData",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "DimOrganization.txt",
+				"fileSystem": "masterdata"
+			},
+			"columnDelimiter": ",",
+			"rowDelimiter": "\n",
+			"escapeChar": "\"",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "OrganizationKey",
+				"type": "String"
+			},
+			{
+				"name": "ParentOrganizationKey",
+				"type": "String"
+			},
+			{
+				"name": "PercentageOfOwnership",
+				"type": "String"
+			},
+			{
+				"name": "OrganizationName",
+				"type": "String"
+			},
+			{
+				"name": "CurrencyKey",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

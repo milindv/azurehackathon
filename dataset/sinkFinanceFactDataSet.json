@@ -1,0 +1,59 @@
+{
+	"name": "sinkFinanceFactDataSet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LnkAzureSynapse",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "FinanceKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DateKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "OrganizationKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DepartmentGroupKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ScenarioKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AccountKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Amount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "FactFinance"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

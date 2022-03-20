@@ -1,0 +1,16 @@
+{
+	"name": "LnkAzureSynapse",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDW",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=analyticsworkbench.sql.azuresynapse.net;initial catalog=demoedw;user id=sqladminuser",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlNZTkFQU0VARTk2MjlDNzItMURBRC00Nzc0LUE3RDgtRDI2N0RCQ0VGRkI4X2E5M2U5OTgxLTM5NDctNDA3NS1iNWJhLTA4MmY3MTA0YWQ2YSINCn0="
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

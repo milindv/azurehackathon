@@ -1,0 +1,11 @@
+{
+	"name": "LnkAzureKeyVault",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://cogvitivevalutdemo2022.vault.azure.net/"
+		}
+	}
+}

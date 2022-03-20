@@ -1,0 +1,28 @@
+{
+	"name": "LnkCognitiveService",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "CognitiveService",
+		"typeProperties": {
+			"subscriptionId": "dea42be7-ef07-4ffa-b8ac-50a2a1a28ffd",
+			"resourceGroup": "datawarehouse2022",
+			"csName": "democomputervision2022",
+			"csKind": "ComputerVision",
+			"csLocation": "eastus",
+			"endPoint": "https://democomputervision2022.cognitiveservices.azure.com/",
+			"csKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LnkAzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "cognitivesecret"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

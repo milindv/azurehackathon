@@ -1,0 +1,17 @@
+{
+	"name": "JSON Query Demo",
+	"properties": {
+		"content": {
+			"query": "SELECT \n    /*Scalar attributes extraction using JSON_VALUE*/\n      JSON_VALUE([jsonContent], '$.id') AS [id]\n    , JSON_VALUE([jsonContent], '$.first_name') AS [first_name]\n    , JSON_VALUE([jsonContent], '$.last_name') AS [last_name]\n    , JSON_VALUE([jsonContent], '$.email') AS [email]\n    , JSON_VALUE([jsonContent], '$.gender') AS [gender]\n    , JSON_VALUE([jsonContent], '$.ip_address') AS [ip_address]\n    , JSON_VALUE([jsonContent], '$.stores_purchased_at') AS [stores_purchased_at]\nFROM\n    OPENROWSET(\n        BULK 'https://datalakedemo2022.dfs.core.windows.net/misc/demo01.json',\n        FORMAT = 'CSV',\n        FIELDQUOTE = '0x0b',\n        FIELDTERMINATOR ='0x0b',\n        ROWTERMINATOR = '0x0b'\n    )\n    WITH(\n        [jsonContent] varchar(MAX) /*This now contains the full JSON document from the file. Note the datatype is varchar(MAX).*/\n    ) AS [result]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,59 @@
+{
+	"name": "sourceFinanceData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LnkSourceFactData",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "FactFinance.txt",
+				"folderPath": "finance",
+				"fileSystem": "factdata"
+			},
+			"columnDelimiter": ",",
+			"rowDelimiter": "\n",
+			"escapeChar": "\"",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "FinanceKey",
+				"type": "String"
+			},
+			{
+				"name": "DateKey",
+				"type": "String"
+			},
+			{
+				"name": "OrganizationKey",
+				"type": "String"
+			},
+			{
+				"name": "DepartmentGroupKey",
+				"type": "String"
+			},
+			{
+				"name": "ScenarioKey",
+				"type": "String"
+			},
+			{
+				"name": "AccountKey",
+				"type": "String"
+			},
+			{
+				"name": "Amount",
+				"type": "String"
+			},
+			{
+				"name": "Date\r",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

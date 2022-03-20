@@ -1,0 +1,74 @@
+{
+	"name": "AutoMLLoadData",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkpool2022",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "4e073bad-a105-46f4-8bc7-50b295121233"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/dea42be7-ef07-4ffa-b8ac-50a2a1a28ffd/resourceGroups/datawarehouse2022/providers/Microsoft.Synapse/workspaces/analyticsworkbench/bigDataPools/sparkpool2022",
+				"name": "sparkpool2022",
+				"type": "Spark",
+				"endpoint": "https://analyticsworkbench.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool2022",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 3,
+				"cores": 16,
+				"memory": 112,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"from pyspark.sql import functions as F\r\n",
+					"from pyspark.sql import types as T\r\n",
+					"\r\n",
+					"df = spark.read.load('abfss://misc@datalakedemo2022.dfs.core.windows.net/weight-height.csv', format='csv'\r\n",
+					", header=True\r\n",
+					")\r\n",
+					"\r\n",
+					"df = df.withColumn(\"Height\", F.col(\"Height\").cast(T.IntegerType()))\r\n",
+					"df = df.withColumn(\"Weight\", F.col(\"Weight\").cast(T.IntegerType()))\r\n",
+					"\r\n",
+					"df.write.mode(\"overwrite\").saveAsTable(\"default.WeightToHeight\")"
+				],
+				"attachments": null,
+				"execution_count": 10
+			}
+		]
+	}
+}

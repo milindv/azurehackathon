@@ -1,0 +1,32 @@
+{
+	"name": "sinkDepartmentGroup",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LnkAzureSynapse",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "DepartmentGroupKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ParentDepartmentGroupKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DepartmentGroupName",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DimDepartmentGroup"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}
